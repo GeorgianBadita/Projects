@@ -4,8 +4,8 @@
     @date:   12/17/2017 19:17
 """
 from domain.AI.minimax import MiniMax
+from domain.entities.color import Color
 from domain.entities.player import Player
-import copy
 
 class UI(object):
     """
@@ -13,13 +13,15 @@ class UI(object):
     """
     def __init__(self, game_manager):
         self.__manager = game_manager
-
+        self.clr = Color("some_clr")
 
     def __print_table(self):
         """
         Function that prints the table and optins at any turn
         :return:
         """
+
+        print(self.clr.GREEN + "Table:\n" + self.clr.END)
         self.__manager.draw_board_mgr()
 
 
@@ -33,24 +35,30 @@ class UI(object):
         player1.set_turn(True)
         player2.set_turn(False)
         while self.__manager.is_game_over() is False:
-            self.__print_table()
             try:
+                self.__print_table()
+
                 new_move = self.__manager.new_move_mgr(self.__manager.get_board_mgr())
 
                 if player1.get_turn() is True:
                     move = int(input("Please give a move: \n"))
                     if move < 1 or move > 7:
                         raise ValueError
+                    print("You made a move on C" + str(move) + "\n\n")
                     self.__change_move(player1, player2, new_move, move)
                 elif player2.get_turn() is True:
-                    min_maxx_manager = copy.deepcopy(self.__manager)
-                    min_maxx = MiniMax(min_maxx_manager)
-                    move_calc = min_maxx.mini_max()
-                    self.__change_move(player2, player1, new_move, move_calc)
+                    min_maxx = MiniMax()
+                    move_calc = min_maxx.mini_max(new_move, 4)
+                    print("Computer made a move on C" + str(move_calc) + "\n\n")
+                    self.__change_move(player2, player1, new_move, move_calc + 1)
             except ValueError:
-                print("The move is incorrect")
+                print(self.clr.RED + "The move is incorrect\n" + self.clr.END)
         self.__print_table()
-        print("\n\n" + self.__manager.is_game_over().get_type() + " won")
+        if self.__manager.is_game_over().get_type() == "Computer":
+            print("Computer won!")
+        else:
+            print("You won!")
+
 
 
     def __change_move(self, player, ot_player, move, given_move):

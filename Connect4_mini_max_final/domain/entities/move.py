@@ -3,6 +3,7 @@
     @email:  geo.badita@gmail.com
     @date:   12/17/2017 16:53
 """
+from domain.entities.player import Player
 from utils.helper import check_4_col, check_4_line, check_4_diag
 
 
@@ -18,6 +19,8 @@ class Move(object):
         col = self.get_move()
         board = self.get_board()
         player = self.get_player()
+        if col not in legal_moves:
+            raise ValueError("The move is incorrect!")
         if col in legal_moves:
             table = board.get_table()
             for line in range(len(table) - 1, -1, -1):
@@ -61,7 +64,6 @@ class Move(object):
         board = self.get_board()
         table = board.get_table()
 
-
         if check_4_col(table) is not False:
             return self.__player
         elif check_4_line(table) is not False:
@@ -70,9 +72,25 @@ class Move(object):
             return self.__player
         return None
 
+    def check_if_draw(self):
+        """
+        Function that checks if the game is draw
+        :return:
+        """
+
+        if len(self.get_pos_moves()) == 0:
+            return True
+        return False
 
     def set_move(self, new_move):
         self.__move = new_move
 
     def set_player(self, new_player):
         self.__player = new_player
+
+    def alternate_turn(self):
+        if self.__player.get_type() == "Computer":
+            self.set_player(Player("Human"))
+        else:
+            self.set_player(Player("Computer"))
+

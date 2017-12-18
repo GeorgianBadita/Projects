@@ -5,8 +5,6 @@
 """
 from domain.entities.move import Move
 from domain.entities.player import Player
-from utils.helper import check_4_col, check_4_line, check_4_diag
-
 
 class GameManager(object):
 
@@ -33,13 +31,4 @@ class GameManager(object):
         new_move = Move(board)
         return new_move
 
-    def get_pos_moves_mgr(self):
-        return self.__move.get_pos_moves()
 
-    def next_state(self, move, player):
-        to_move = self.new_move_mgr(self.__move.get_board())
-        to_move.set_move(move)
-        to_move.set_player(Player(player))
-        to_move.make_move()
-        self.__move = to_move
-        return self

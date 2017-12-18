@@ -43,7 +43,7 @@ class Board(object):
                 clr_obj = Color(table[line][col])
                 clr = clr_obj.get_color()
                 end_clr = clr_obj.get_end_clr()
-                string_board = string_board + clr + str(table[line][col]) + end_clr + " "
+                string_board = string_board + clr + "o" + end_clr + " "
             string_board += "\n"
         print(string_board)
 
@@ -53,7 +53,7 @@ class Board(object):
         of the board
         :return:
         """
-        utility = 138
+        utility = 0
         sum = 0
         table = self.get_table()
         for line in range(len(table)):
