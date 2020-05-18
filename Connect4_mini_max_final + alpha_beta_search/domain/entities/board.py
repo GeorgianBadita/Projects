@@ -4,6 +4,8 @@
     @date:   12/17/2017 16:53
 """
 from domain.entities.color import Color
+
+
 class Board(object):
     '''
     Class fot he board entity
@@ -16,12 +18,10 @@ class Board(object):
                     [4, 6, 8, 10, 8, 6, 4],
                     [3, 4, 5, 7, 5, 4, 3]]
 
-
-
     def __init__(self, height, width):
         self.__height = height
         self.__width = width
-        self.__table = [[0 for i in range(width)] for j in range(height)]
+        self.__table = [[0 for i in range(7)] for j in range(6)]
 
     def get_height(self):
         return self.__height

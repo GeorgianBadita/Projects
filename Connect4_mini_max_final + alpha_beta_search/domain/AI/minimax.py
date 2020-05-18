@@ -18,8 +18,6 @@ class MiniMax:
         best_score = float('-inf')
         for move in moves:
             clone = self.next_state(game_state, move)
-            #print("##########")
-            #print("move " + str(move))
             score = self.__min_play(clone, depth - 1)
             print(str(move) + ":" + str(score))
             if score > best_score:
@@ -27,9 +25,8 @@ class MiniMax:
                 best_move = move
         return best_move
 
-
     def __min_play(self, game_state, depth):
-        #game_state.get_board().draw_board()
+        # game_state.get_board().draw_board()
         if game_state.check_if_win() is not None:
             return float('inf')
         if game_state.check_if_draw() is True:
@@ -39,7 +36,7 @@ class MiniMax:
         moves = game_state.get_pos_moves()
         best_score = float('inf')
         for move in moves:
-            #game_state.set_player(Player("Human"))
+            # game_state.set_player(Player("Human"))
             clone = self.next_state(game_state, move)
             score = self.__max_play(clone, depth - 1)
 
@@ -50,7 +47,7 @@ class MiniMax:
         return best_score
 
     def __max_play(self, game_state, depth):
-        #game_state.get_board().draw_board()
+        # game_state.get_board().draw_board()
         if game_state.check_if_win() is not None:
             return float('-inf')
         if game_state.check_if_draw() is True:
@@ -60,7 +57,7 @@ class MiniMax:
         moves = game_state.get_pos_moves()
         best_score = float('-inf')
         for move in moves:
-            #game_state.set_player(Player("Computer"))
+            # game_state.set_player(Player("Computer"))
             clone = self.next_state(game_state, move)
             score = self.__min_play(clone, depth - 1)
             if score > best_score:
@@ -73,5 +70,5 @@ class MiniMax:
         clone.set_move(move)
         clone.make_move()
         clone.alternate_turn()
-        #clone.get_board()
+        # clone.get_board()
         return clone

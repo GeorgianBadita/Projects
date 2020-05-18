@@ -28,11 +28,11 @@ def test_create_board():
 def test_check_win():
     board = Board(6, 7)
     table = board.get_table()
-    #assert check_4_line(table) is True
-    #assert check_4_col(table) is True
-    #assert check_4_diag(table) is True
+    # assert check_4_line(table) is True
+    # assert check_4_col(table) is True
+    # assert check_4_diag(table) is True
 
-    matrix = [[x for x in range(6)]]*6
+    matrix = [[x for x in range(6)]] * 6
 
     assert check_4_diag(matrix) is False
     assert check_4_col(matrix) is True
@@ -61,7 +61,7 @@ def test_create_move():
     mv.set_move(1)
     assert len(mv.get_pos_moves()) == 7
     mv.make_move()
-    #table = board.get_table()
+    # table = board.get_table()
     pl2.set_turn(True)
     mv1 = Move(board)
     mv1.set_player(pl2)
@@ -71,7 +71,6 @@ def test_create_move():
     mv1.make_move()
     mv1.make_move()
     assert mv1.check_if_win() == mv1.get_player()
-
 
 
 test_check_win()

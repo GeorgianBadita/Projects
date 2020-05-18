@@ -6,6 +6,7 @@
 from domain.entities.move import Move
 from domain.entities.player import Player
 
+
 class GameManager(object):
 
     def __init__(self):
@@ -18,7 +19,6 @@ class GameManager(object):
         self.__move.get_board().draw_board()
 
     def is_game_over(self):
-
         is_over = self.__move.check_if_win()
         if is_over is None:
             return False
@@ -30,5 +30,3 @@ class GameManager(object):
     def new_move_mgr(self, board):
         new_move = Move(board)
         return new_move
-
-

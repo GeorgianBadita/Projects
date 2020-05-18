@@ -93,4 +93,3 @@ class Move(object):
             self.set_player(Player("Human"))
         else:
             self.set_player(Player("Computer"))
-

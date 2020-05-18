@@ -5,8 +5,6 @@
 """
 import copy
 
-from domain.entities.player import Player
-
 
 class AlphaBeta:
 
@@ -27,9 +25,8 @@ class AlphaBeta:
             print("value: ", score)
         return best_move
 
-
     def __min_value(self, game_state, alpha, beta, depth):
-        #game_state.get_board().draw_board()
+        # game_state.get_board().draw_board()
         if game_state.check_if_win() is not None:
             return float('inf')
         if game_state.check_if_draw() is True:
@@ -40,7 +37,7 @@ class AlphaBeta:
         infinity = float('inf')
         score = infinity
         for move in moves:
-            #game_state.set_player(Player("Human"))
+            # game_state.set_player(Player("Human"))
             clone = self.next_state(game_state, move)
             score = min(score, self.__max_value(clone, alpha, beta, depth - 1))
             if score <= alpha:
@@ -50,7 +47,7 @@ class AlphaBeta:
         return score
 
     def __max_value(self, game_state, alpha, beta, depth):
-        #game_state.get_board().draw_board()
+        # game_state.get_board().draw_board()
         if game_state.check_if_win() is not None:
             return float('-inf')
         if game_state.check_if_draw() is True:
@@ -60,7 +57,7 @@ class AlphaBeta:
         moves = game_state.get_pos_moves()
         score = float('-inf')
         for move in moves:
-            #game_state.set_player(Player("Computer"))
+            # game_state.set_player(Player("Computer"))
             clone = self.next_state(game_state, move)
             score = max(score, self.__min_value(clone, alpha, beta, depth - 1))
             if score >= beta:

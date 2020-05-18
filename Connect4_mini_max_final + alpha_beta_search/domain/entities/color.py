@@ -4,8 +4,8 @@
     @date:   12/17/2017 19:07
 """
 
-class Color:
 
+class Color:
     PURPLE = '\033[95m'
     CYAN = '\033[96m'
     DARKCYAN = '\033[36m'

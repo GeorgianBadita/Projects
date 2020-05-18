@@ -3,10 +3,13 @@
     @email:  geo.badita@gmail.com
     @date:   12/17/2017 16:53
 """
+
+
 class Player(object):
     '''
     Class for Player entity
     '''
+
     def __init__(self, type):
         self.__type = type
         self.__is_turn = None
