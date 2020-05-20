@@ -49,7 +49,7 @@ class GameState:
         player = self.__next_player
         utility = 0
         util_table = BoardUtils.get_utility_table()
-        player_piece_type = Piece.BLUE if player.alliance == Alliance.BLUE else Piece.RED
+        player_piece_type = Piece.YELLOW if player.alliance == Alliance.YELLOW else Piece.RED
         table = self.board_builder.board_config
         for line in range(len(table)):
             for col in range(len(table[0])):

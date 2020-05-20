@@ -19,7 +19,7 @@ def player_red():
 
 @pytest.fixture
 def player_blue():
-    return Player(Alliance.BLUE, PlayerType.HUMAN)
+    return Player(Alliance.YELLOW, PlayerType.HUMAN)
 
 
 @pytest.fixture

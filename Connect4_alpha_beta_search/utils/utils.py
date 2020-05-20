@@ -1,3 +1,4 @@
+from typing import Any
 from typing import List
 
 from board.piece.piece import Piece
@@ -67,3 +68,23 @@ def check_game_over(board_config: List[List[Piece]]) -> bool:
                         return True
 
     return False
+
+
+def read_move_from_keyboard() -> Any:
+    """
+    Function to read a move from keyboard
+    :return: move
+    """
+    while True:
+        try:
+            cmd = input("Please give a number from 0 to 6 or u (Undo): ")
+            if len(cmd) > 1 or len(cmd) < 1:
+                raise ValueError
+            elif cmd == 'u':
+                return cmd
+            num = int(cmd)
+            if num < 0 or num > 6:
+                raise ValueError
+            return num
+        except ValueError:
+            print("INVALID MOVE, please try again! :)")

@@ -34,8 +34,8 @@ class Board:
             for col in range(BoardUtils.WIDTH):
                 if self.__table[line][col] == Piece.RED:
                     string_board += Color.RED + Color.BOLD + "o" + Color.END + " "
-                elif self.__table[line][col] == Piece.BLUE:
-                    string_board += Color.BLUE + Color.BOLD + "o" + Color.END + " "
+                elif self.__table[line][col] == Piece.YELLOW:
+                    string_board += Color.YELLOW + Color.BOLD + "o" + Color.END + " "
                 else:
                     string_board += Color.BOLD + "o" + Color.END + " "
             string_board += "\n"

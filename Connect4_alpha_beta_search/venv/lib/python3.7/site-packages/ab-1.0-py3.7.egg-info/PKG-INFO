@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ab
+Version: 1.0
+Summary: A/B Testing Framework for Python with optional Multi-armed bandit implementation
+Home-page: https://github.com/dancrew32/ab/
+Author: Dan Masquelier
+Author-email: dancrew32+ab@gmail.com
+License: Unlicense
+Description: See usage here: https://github.com/dancrew32/ab/
+Platform: UNKNOWN

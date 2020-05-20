@@ -1,13 +1,17 @@
 from copy import deepcopy
 from typing import Optional
 
+import utils.settings as settings
 from board import Connect4BoardBuilder
 from board.piece.piece import Piece
 from game.game_state import GameState
 from game.memento.I_memento import IMemento
 from game.memento.connect4_memento import Connect4Memento
+from game.strategy.computer_strategy import ComputerStrategy
+from game.strategy.human_strategy import HumanStrategy
 from player.alliance_enum import Alliance
 from player.player import Player
+from player.type_enum import PlayerType
 from utils.utils import check_game_over
 
 
@@ -19,8 +23,16 @@ class GameManager:
     def __init__(self, player1: Player, player2: Player):
         self.__player1 = player1
         self.__player2 = player2
+        self.__set_move_strategy(player1)
+        self.__set_move_strategy(player2)
         self.__board_builder = Connect4BoardBuilder()
         self.__game_state = GameState(self.__board_builder, player1)
+
+    def __set_move_strategy(self, player):
+        if player.player_type == PlayerType.HUMAN:
+            player.strategy = HumanStrategy()
+        else:
+            player.strategy = ComputerStrategy(self, settings.DEPTH)
 
     def make_move(self, move: int) -> Optional[Player]:
         """
@@ -32,7 +44,7 @@ class GameManager:
         if current_player.alliance == Alliance.RED:
             current_piece = Piece.RED
         else:
-            current_piece = Piece.BLUE
+            current_piece = Piece.YELLOW
         self.__board_builder.set_piece(current_piece, move)
         self.__game_state.board_builder = self.__board_builder
         if self.game_over:

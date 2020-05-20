@@ -1,3 +1,4 @@
+from copy import deepcopy
 from datetime import datetime
 
 from game.game_state import GameState
@@ -10,7 +11,7 @@ class Connect4Memento(IMemento):
         Constructor for Connect4Memento class
         :param state: State to be in the memento
         """
-        self.__state = state
+        self.__state = deepcopy(state)
         self.__date = str(datetime.now())
 
     def get_state(self) -> GameState:
