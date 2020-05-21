@@ -69,3 +69,13 @@ J
 game/memento/care_taker.py,a/d/ad24bfcb9dd6b9260ed5d13c0a5ceb96fc06f4c3
 L
 ui/start_new_game_command.py,1/6/162a41043d2702963192e2f2650ed8a60587827f
+B
+ui/undo_command.py,f/4/f4fcaa836aa4513f54ce470c6f004484c07fb1b1
+O
+ui/select_difficulty_command.py,0/9/098daddc984eb1854143576d9291316873c1e9b0
+R
+"board/adapter/adapter_interface.py,7/b/7bb49e089198e6a1ed6e947852874086340d6311
+P
+ board/adapter/board_evaluator.py,4/7/47597eb452431eae82c45e6cd7b16a88c3cfc52a
+N
+board/adapter/board_adapter.py,b/b/bbb4af49a781114c7edaec9a5d77969974a56fde

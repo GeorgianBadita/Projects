@@ -1,3 +1,3 @@
 builder -> creational
 memenot, strategy -> behavioural
-decorator, ... -> structural
+decorator, adapter -> structural

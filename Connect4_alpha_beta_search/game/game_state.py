@@ -1,7 +1,6 @@
-from board import BoardUtils
 from board import IBuilder
-from board.piece.piece import Piece
-from player.alliance_enum import Alliance
+from board.adapter.board_adapter import BoardEvaluatorAdapter
+from board.adapter.board_evaluator import Connect4BoardEvaluator
 from player.player import Player
 
 
@@ -46,18 +45,7 @@ class GameState:
         who is ntext to move
         :return: board score
         """
-        player = self.__next_player
-        utility = 0
-        util_table = BoardUtils.get_utility_table()
-        player_piece_type = Piece.YELLOW if player.alliance == Alliance.YELLOW else Piece.RED
-        table = self.board_builder.board_config
-        for line in range(len(table)):
-            for col in range(len(table[0])):
-                if table[line][col] == player_piece_type:
-                    utility += util_table[line][col]
-                elif table[line][col] != Piece.EMPTY:
-                    utility -= util_table[line][col]
-        return utility
+        return BoardEvaluatorAdapter(Connect4BoardEvaluator(), self).evaluate_board(self.board_builder)
 
     def __str__(self) -> str:
         """
